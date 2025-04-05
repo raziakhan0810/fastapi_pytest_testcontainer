@@ -1,0 +1,5 @@
+fastapi
+pytest
+testcontainers
+psycopg2
+uvicorn
