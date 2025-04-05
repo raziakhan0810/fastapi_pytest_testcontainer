@@ -112,28 +112,27 @@ Get a user by ID.
 **Testing**
 This project includes pytest for testing the API endpoints. Testcontainers is used to spin up a PostgreSQL container during testing.
 
-Tests Overview
+**Tests Overview**
 The following tests are included:
 
-Test creating a new user (POST /users/).
+`Test creating a new user (POST /users/).
 
 Test fetching all users (GET /users/).
 
 Test fetching a user by ID (GET /users/{user_id}).
 
-Test fetching a non-existent user (404 error for GET /users/{non-existent-user-id}).
+Test fetching a non-existent user (404 error for GET /users/{non-existent-user-id}).`
 
-Running Tests
+**Running Tests**
 To run the tests, ensure that Docker is running on your machine (as Testcontainers uses Docker to create a PostgreSQL container for the tests).
 
-Run the tests using pytest:
+**Run the tests using pytest:**
 
-bash
-Copy
-pytest
+`pytest`
+
 This will start the PostgreSQL container, run the tests, and then shut down the container once the tests are completed.
 
-Test Workflow
+**Test Workflow**
 Testcontainers spins up a PostgreSQL container.
 
 The database schema and test data are set up for the tests.
@@ -145,8 +144,7 @@ After tests finish, the container is torn down.
 Test Example
 Here's an example of a test that creates a user and verifies the response:
 
-python
-Copy
+`
 def test_create_user(setup_database):
     response = client.post(
         "/users/",
@@ -155,17 +153,14 @@ def test_create_user(setup_database):
     assert response.status_code == 200
     data = response.json()
     assert data["username"] == "newuser"
-    assert data["email"] == "newuser@example.com"
-Docker and Testcontainers
+    assert data["email"] == "newuser@example.com"`
+
+**Docker and Testcontainers**
 This project uses Testcontainers to manage PostgreSQL containers for integration testing. When tests are run, Testcontainers will automatically pull a PostgreSQL image and run the database in a container, ensuring that each test runs with a fresh database instance.
 
-Docker Installation
+**Docker Installation**
 Ensure that Docker is installed and running on your machine. You can download Docker from Docker's official website.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Additional Notes
-The project includes a simple PostgreSQL database setup with a users table. For production environments, remember to hash passwords and implement security best practices.
-
-The tests in this project are meant to demonstrate integration testing with Testcontainers and PostgreSQL. You can extend this to include more tests, such as updating or deleting users.
+The project includes a simple PostgreSQL database setup with a users table. 
